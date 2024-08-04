@@ -87,7 +87,7 @@
 		// Scrolly.
 			$('.scrolly').scrolly();
 
-		// Poptrox.
+		/* // Poptrox.	-	Popout video after clicking thumbnails (DISABLE)
 			$window.on('load', function() {
 
 				var $thumbs = $('.thumbnails');
@@ -106,7 +106,7 @@
 						windowMargin: (skel.breakpoint('small').active ? 5 : 50)
 					});
 
-			});
+			}); */
 
 		// Initial scroll.
 			$window.on('load', function() {
