@@ -1,0 +1,171 @@
+/* body: Contiene toda la pagina de productos */
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* svg: Imagenes svg */
+svg{
+    width: 50px; /* tamaño 30px */
+    cursor: pointer; /*Cambiar cursor sobre icono SVG (solo hay un SVG: icono carrito)*/
+}
+
+/* a: links */
+a{
+    text-decoration: none; /* Borrar subrayado */
+    /* color: aliceblue; */ /* por definir */
+    cursor: pointer; /* Cambiar cursor sobre icono */
+}
+
+/* button: Botones (Cerrar, Finalizar) - .icon-cart: icono carrito */
+button{
+    cursor: pointer; /*Cambiar cursor sobre botones*/
+}
+
+/* Configuracion del container (global):
+    -El width se ajusta a 900px para evitar que se estire hasta los bordes > 900px
+    -El max-width se ajusta a un 95% del ancho visible en pantalla (ancho max 900px)
+    -El margin es definido automatico para dividir el espacio sobrante de manera equitativa en el lado derecho e izquierdo
+    -El texto es tiene una alineacion central predeterminada
+    -El padding-top es 10px fijo 
+    (OPC) - Agregar delay de 0.5s (o mas) al cambiar (usuario) el width del contenedor
+*/
+.container{
+    width: 900px;
+    max-width: 80vw;
+    margin: auto;
+    /* margin-left: 20px; margin-right: 20px; */
+    text-align: center;
+    padding-top: 10px;
+    /* transition: 0.5s; */
+}
+
+/* Configuracion de la barra principal:
+    -Display: flex permite mover la posicion de los elementos (boton pagina principal/icono carrito)
+    -Se genera un espacio entre los elementos con el width restante
+    -Los elementos tienen una alineacion central predeterminada
+    (OPC) -padding-top 10px fijo
+*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding-top: 10px; */
+}
+
+/* Configuracion del "boton" 'Volver a pagina principal':
+    -La imagen SVG tendra una posicion relativa para poder posicionar el display de items sobre ella (posicion absoluta)
+    (OPC) -Cambiar fondo contenedor del "boton" a color rojo (color de fuente blanca y no negra), aplicar flex al contenedor del "boton" (para centrar contenido) y un bordeado del 10% (semi-block)
+*/
+.title{
+    left: 10px;
+    /* background-color: red;
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  */
+}
+
+.title a{
+    font-size: large;
+    color: black
+    /* color: white; */
+}
+
+/* Configuracion del icono del carrito:
+    -Posicionado 10px a la izquierda (Mejora visibilidad a menor width)
+    -La imagen SVG tendra una posicion relativa para poder posicionar el display de items sobre ella (posicion absoluta)
+
+    -El contenedor del display de items tendra un fondo rojo (Simular efecto de notificacion)
+    -Se aplica flex al contenedor del display (para centrar contenido) y se posiciona en la parte superior derecha del icono SVG. Borde del 50% (circular)
+*/
+.icon-cart{
+    right: 10px;
+    position: relative;
+}
+.icon-cart span{
+    position: absolute;
+    background-color: red;
+    top: 0%;
+    right: -10px;
+    width: 20px;    
+    height: 20px;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Configuracion contenedor del carrito:
+    -fuente color blanco, fondo "azul marino"
+    -Posicion fija a la ventana del navegador (o mobile) en posicion 0, 0, 0derecha
+    -Display de grid para separar los elementos, se dividen los en 3 filas con tamaños distintos segun su posicion: titulo (50px), items del contenedor (1fr - restante), botones (50px compartidos)
+
+    -El titulo tendra un padding a la izquierda de 10px y no tendra margin
+    (OPC) -Aplicar el margin automatico a todo el titulo
+
+    -Aplicar overflow automatico a la lista de productos, si se agregan muchos (excediendo la altura maxima 300px (1fr-50px-50px) aparecera una barra de desplazamiento para navegar productos)
+    (OPC-2) -Reducir el tamaño de la barra de desplazamiento a 0 para mejor visualizacion
+
+    -Display grid para separar los botones y en 2 columnas distintas de igual tamaño cada una (1fr)
+        -El borde de cada boton es eliminado, su fondo es distinto y su fuente en negrita (bold)
+*/
+.cartContainer{
+    background-color: #00204a;
+    color: white;
+    width: 400px;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+}
+.cartContainer h1{
+    padding-top: 10px;
+    padding-left: 20px;
+    /* padding: 20px; */
+    margin: 0
+}
+.cartContainer .cartList{
+    overflow: auto;
+}
+/* Tamaño de barra de desplazamiento al minimo */
+/* .cartContainer .cartList::-webkit-scrollbar{
+    width: 0;
+} */
+.cartContainer .btn{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
+.cartContainer .btn .btn-close{
+    background-color: rgb(52, 100, 204);
+    border: none;
+    font-weight: bold;
+}
+.cartContainer .btn .btn-finish{
+    background-color: rgb(186, 221, 245);
+    border: none;
+    font-weight: bold;
+}
+
+/* Configuracion abrir/cerrar carrito:
+    -Barra movida a la derecha 400px (oculta completamente) de forma predeterminada
+    -Contenido del contenedor principal movido 250px a la izquierda al abrir el carrito
+*/
+.cartContainer{
+    right:-400px;
+}
+body.cartContainerON .cartContainer{
+    right: 0;
+    transition: 0.5s;
+}
+body.cartContainerON .container{
+    transform: translateX(-250px);
+    transition: 0.5s;
+}
