@@ -34,7 +34,6 @@ button{
     width: 900px;
     max-width: 80vw;
     margin: auto;
-    /* margin-left: 20px; margin-right: 20px; */
     text-align: center;
     padding-top: 10px;
     /* transition: 0.5s; */
@@ -55,23 +54,15 @@ header{
 
 /* Configuracion del "boton" 'Volver a pagina principal':
     -La imagen SVG tendra una posicion relativa para poder posicionar el display de items sobre ella (posicion absoluta)
-    (OPC) -Cambiar fondo contenedor del "boton" a color rojo (color de fuente blanca y no negra), aplicar flex al contenedor del "boton" (para centrar contenido) y un bordeado del 10% (semi-block)
 */
 .title{
     left: 10px;
-    /* background-color: red;
-    width: 100px;
-    height: 50px;
-    border-radius: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;  */
 }
 
+/* SE REEMPLAZARA EL TEXTO POR UN LOGO IMG */
 .title a{
     font-size: large;
     color: black
-    /* color: white; */
 }
 
 /* Configuracion del icono del carrito:
@@ -104,14 +95,14 @@ header{
     -Posicion fija a la ventana del navegador (o mobile) en posicion 0, 0, 0derecha
     -Display de grid para separar los elementos, se dividen los en 3 filas con tamaños distintos segun su posicion: titulo (50px), items del contenedor (1fr - restante), botones (50px compartidos)
 
-    -El titulo tendra un padding a la izquierda de 10px y no tendra margin
-    (OPC) -Aplicar el margin automatico a todo el titulo
+    -El titulo tendra un padding a la izquierda/arriba de 10px y no tendra margin
+    (OPC) -Aplicar padding global de 20px
 
     -Aplicar overflow automatico a la lista de productos, si se agregan muchos (excediendo la altura maxima 300px (1fr-50px-50px) aparecera una barra de desplazamiento para navegar productos)
-    (OPC-2) -Reducir el tamaño de la barra de desplazamiento a 0 para mejor visualizacion
+    -Tamaño de la barra de desplazamiento reducido a 0 para mejor visualizacion
 
     -Display grid para separar los botones y en 2 columnas distintas de igual tamaño cada una (1fr)
-        -El borde de cada boton es eliminado, su fondo es distinto y su fuente en negrita (bold)
+        -El borde de cada boton es eliminado, su fondo es distinto y su fuente en negrita (bold)    -   NOTA: EL TAMAÑO DE EL BOTON CERRAR X2 FINALIZAR
 */
 .cartContainer{
     background-color: #00204a;
@@ -126,9 +117,9 @@ header{
     grid-template-rows: 50px 1fr 50px;
 }
 .cartContainer h1{
-    padding-top: 10px;
-    padding-left: 20px;
-    /* padding: 20px; */
+    /* padding-top: 10px;
+    padding-left: 20px; */
+    padding: 20px;
     margin: 0
 }
 .cartContainer .cartList{
