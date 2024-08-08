@@ -119,6 +119,7 @@ header{
 .cartContainer h1{
     /* padding-top: 10px;
     padding-left: 20px; */
+    font-size:medium;
     padding: 20px;
     margin: 0
 }
@@ -132,7 +133,6 @@ header{
 .cartContainer .btn{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    
 }
 .cartContainer .btn .btn-close{
     background-color: rgb(52, 100, 204);
@@ -159,4 +159,63 @@ body.cartContainerON .cartContainer{
 body.cartContainerON .container{
     transform: translateX(-250px);
     transition: 0.5s;
+}
+
+.productsList .item img{
+    width: 80%; /* width */
+    /* Posible cambiar width, agregar fondo, sombra */
+    /* filter: drop-shadow(...); */ /* sombra */
+}
+.productsList .item h2{
+    font-size: 80%;
+    /* Posible cambiar fuente, fondo para titulos, size */
+}
+/* Posible cambiar color de boton, size, posicion etc */
+/* .productsList .item button{
+
+} */
+
+.productsList .item{
+    position: relative;
+    top: 50px;
+    /* Posible agregar fondo a imagenes planas (las imagenes no son planas) */
+}
+.productsList{
+    /* Posible cambiar numero de columnas, espacio top,bot,left,right entre productos (individual o global) */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* gap: 50px; */ /* gap global */
+    row-gap: 10px;
+}
+
+/* TEST 1: MODIFICAR Y EXLICAR */
+.cartList .item img{
+    width: 100%;
+}
+.cartList .item{
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+.cartList .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+.cartList .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+.cartList .quantity{
+    display: flex;
+}
+.cartList .item:nth-child(even){
+    background-color: #eee1;
 }
