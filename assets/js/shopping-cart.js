@@ -65,9 +65,8 @@ const cart = () => {
             let info = products[productPosition];
             let newCartProduct = document.createElement('div');
             newCartProduct.classList.add('item');
-
-            console.log(productPosition);
-            console.log(info);
+            /* console.log(productPosition);
+            console.log(info); */
             
 
             newCartProduct.innerHTML =

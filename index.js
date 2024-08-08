@@ -1,5 +1,5 @@
-import cart from './shopping-cart.js';  // Importar carrito
-import products from './../js/products.js';
+import cart from './assets/js/shopping-cart.js';  // Importar carrito
+import products from './assets/js/products.js';
 
 /* Importar IDs de los archivos temporales (temporary-content.html) para traer el contenido de la lista de productos  */
 let app = document.getElementById('temporaryApp');
@@ -11,17 +11,16 @@ let temporaryContent = document.getElementById('temporaryContent');
     -Contenido actual - contenedor contentContainer vacio o algun contenido temporal que se este utilizando
 */
 const loadTemplate = () => {
-    fetch('./../html/category1.html')
-    .then(response => response.text())
-    .then(html => {
-        
-        app.innerHTML = html; // Montar Contenido temporal en la pagina de productos
-        let contentTab = document.getElementById('contentContainer');
-        contentTab.innerHTML = temporaryContent.innerHTML; // Reemplazar el Contenido actual con Contenido temporal
-        temporaryContent.innerHTML = null; // Eliminar el Contenido temporal
-        cart(); // Ejecuta eventos para abrir/cerrar carrito
-        initApp();
-    })
+    fetch('./temporary-content.html')
+        .then(response => response.text())
+        .then(html => {
+            app.innerHTML = html; // Montar Contenido temporal en la pagina de productos
+            let contentTab = document.getElementById('contentContainer');
+            contentTab.innerHTML = temporaryContent.innerHTML; // Reemplazar el Contenido actual con Contenido temporal
+            temporaryContent.innerHTML = null; // Eliminar el Contenido temporal
+            cart(); // Ejecuta eventos para abrir/cerrar carrito
+            initApp();
+        })
 }
 
 loadTemplate();
@@ -29,7 +28,6 @@ loadTemplate();
 // Funcion para cargar productos en la lista 'productsList' de 'contentContainer' (Contenido temporal)
 const initApp = () => {
     let productsList = document.querySelector('.productsList');
-    console.log(products); // Imprimir lista de productos a visualizar en consola (DEV TEST BORRAR LUEGO)
     productsList.innerHTML = null;  // Borrar contenido actual de lista de productos (Reemplaza contenido temporal que se este mostrando previamente)
 
     /* Ciclo para mostrar cada uno de los productos
@@ -42,7 +40,7 @@ const initApp = () => {
 
         // Parametros del item: link de imagen (src-local), nombre producto (h2-local), id producto (dataId-local)
         newProduct.innerHTML =
-        `<img src="${product.image}">
+            `<img src="${product.image}">
         <h2>${product.name}</h2>
         <button 
             class="addCart" 
