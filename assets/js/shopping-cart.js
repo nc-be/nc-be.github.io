@@ -14,7 +14,7 @@ const cart = () => {
     })
 
     // Dependiendo de cantidad y posicion se determina el valor agregado a cantidad del producto especificado (Funciona en conjunto con el siguiente Event Listener)
-    const addToCart = (quantity, productPosition, productId) => {
+    const addToCart = (quantity, productPosition, productId, categoryId) => {
         if (quantity > 0) {
             if (productPosition < 0) {
                 cartProducts.push({
@@ -26,7 +26,7 @@ const cart = () => {
             }
         }
         
-        displayData();
+        displayData(categoryId);
     };
 
     /* Evento para agregar items al carrito
@@ -46,12 +46,13 @@ const cart = () => {
         if (target.classList.contains('addCart')) {
             // aumentado cantidad para ese producto y se envian datos a procesar
             quantity++;
-            addToCart(quantity, productPosition, productId);
+            let categoryId = target.classList[1];
+            addToCart(quantity, productPosition, productId, categoryId);
         }
     });
 
     // Mostrar informacion para visualizar: Lista de items del carrito - Manejo del contador del carrito (span del icono del carrito)
-    const displayData = () => {
+    const displayData = (categoryId) => {
         let cartList = document.querySelector('.cartList');
         let iconCartSpan = document.querySelector('.icon-cart span');
         let totalItems = 0; // Cantidad pred. en el span del carrito
@@ -61,12 +62,11 @@ const cart = () => {
         cartProducts.forEach(item => {
             totalItems = totalItems + item.quantity;
 
-            let productPosition = products.findIndex((value) => value.id == item.product_id);
-            let info = products[productPosition];
+            let productPosition = products[categoryId].findIndex((value) => value.id == item.product_id);
+            
+            let info = products[categoryId][productPosition];
             let newCartProduct = document.createElement('div');
             newCartProduct.classList.add('item');
-            /* console.log(productPosition);
-            console.log(info); */
             
 
             newCartProduct.innerHTML =

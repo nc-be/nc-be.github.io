@@ -1,7 +1,7 @@
 const products = [
     {
         "id": 1,
-        "name":"1-AM-22-v1",
+        "name":"1-AM-22-v111111",
         "image": "./../../images/categoriesImages/c1/1-AM-22-v1.jpeg",
         "description": "SDJHJFDSHKSDJFKSDJ"
     },
@@ -72,4 +72,22 @@ const products = [
         "description": "SDJHJFDSHKSDJFKSDJ"
     },
 ]
-export default products;
+const products2 = [
+    {
+        "id": 1,
+        "name":"1-AM-22-v1",
+        "image": "./../../images/categoriesImages/c1/1-AM-22-v1.jpeg",
+        "description": "SDJHJFDSHKSDJFKSDJ"
+    },
+    {
+        "id": 2,
+        "name":"2-AM-22-AUTO-v1",
+        "image": "./../../images/categoriesImages/c1/2-AM-22-AUTO-v1.jpeg",
+        "description": "SDJHJFDSHKSDJFKSDJ"
+    },
+]
+
+const category = [products, products2];
+
+export default category;
+
