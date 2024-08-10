@@ -75,11 +75,13 @@ const finalStep = (categoryId) => {
         // Parametros del item: link de imagen (src-local), nombre producto (h2-local), id producto (dataId-local)
         newProduct.innerHTML =
         `
-        <img src="${item.image}"
+        <a href="./details.html?id=${item.id}&id2=${categoryId}" 
+        class="details"><img src=${item.image}></a>
         <h2>${item.name}</h2>
         <button 
-            class="addCart ${categoryId}" 
-            data-id='${item.id}'>
+            class="addCart" 
+            data-id='${item.id}'
+            data-id2='${categoryId}'>
             Agregar al carrito
         </button>`;
 
