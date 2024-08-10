@@ -26,7 +26,7 @@ const loadTemplate = () => {
 
 loadTemplate();
 
-// Funcion para cargar productos en la lista 'productsList' de 'contentContainer' (Contenido temporal)
+// Funcion para cargar todas las categorias (Aun no se toman en cuenta subcategorias) en la lista 'productsList' de 'contentContainer' (Contenido temporal)
 const initApp = () => {
     let productsList = document.querySelector('.productsList');
     productsList.innerHTML = null;  // Borrar contenido actual de lista de productos (Reemplaza contenido temporal que se este mostrando previamente)
@@ -52,28 +52,34 @@ const initApp = () => {
     */
 }
 
+/* (Ventana de categorias) Evento para agregar items al carrito
+Este evento se produce cuando el sistema identifica que se ha hecho click en algun sitio de la pagina */
 const selector = () => document.addEventListener('click', (event) => {
-    let target = event.target;
+    let target = event.target; // Identificador del elmento clickeado
+
+    // 
     if (target.classList.contains('categories')) {
         finalStep(target.id);
     }
 });
 
+// (Ventana de productos) Funcion para cargar productos en la lista 'productsList' de 'contentContainer' (Contenido temporal)
 const finalStep = (categoryId) => {
     let productsList = document.querySelector('.productsList');
     productsList.innerHTML = null;
-    products[categoryId].forEach(category => {
+    products[categoryId].forEach(item => {
         // Se crea un item en cada ciclo para el elemento 'div' creado a continuacion
         let newProduct = document.createElement('div');
         newProduct.classList.add('item');
 
         // Parametros del item: link de imagen (src-local), nombre producto (h2-local), id producto (dataId-local)
         newProduct.innerHTML =
-            `<img src="${category.image}">
-        <h2>${category.name}</h2>
+        `
+        <img src="${item.image}"
+        <h2>${item.name}</h2>
         <button 
             class="addCart ${categoryId}" 
-            data-id='${category.id}'>
+            data-id='${item.id}'>
             Agregar al carrito
         </button>`;
 
