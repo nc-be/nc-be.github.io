@@ -14,9 +14,13 @@
 		<!-- Este header contiene la barra de tareas de la pagina: La barra cuenta con 2 botones: pagina principal y carrito -->
 		<header>
 			<!-- "Boton" 'pagina principal', funcion: Volver a la pagina principal -->
-			<div class="title">
+			<div class="icon">
 				<!-- ***SE REEMPLAZARA EL ICONO -->
-				<a href="./../../index.html">P&aacutegina principal</a>
+				<a href="./categories.html" class="image fit"><img src="./../../images/search.svg"></a>
+			</div>
+			<div class="icon">
+				<!-- ***SE REEMPLAZARA EL ICONO -->
+				<a href="./../../index.html" class="image fit"><img src="./../../images/home.svg"></a>
 			</div>
 			<!-- Icono 'icon-cart', funcion: Abrir/cerrar carrito de compras -->
 			<div class="icon-cart">
@@ -69,6 +73,23 @@
 		</div>
 	</div>
 	<script src="./../js/shopping-cart.js" type="module"></script>
+	<footer id="footer">
+		<div class="inner">
+			<p>Descripcion pie de pagina</p>
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				<li><a href="#" class="icon fa-whatsapp" onclick="sendwhatsapp();"><span
+					class="label">Instagram</span></a></li>
+			</ul>
+		</div>
+		<div class="copyright">
+			AgroAndes Co.
+		</div>
+	</footer>
 </body>
-
+<!-- Footer -->
+<!-- Copyright -->
 </html>

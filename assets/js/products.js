@@ -71,6 +71,24 @@ const products = [
         "image": "./../../images/categoriesImages/c1/4-AM-45-v1.jpeg",
         "description": "SDJHJFDSHKSDJFKSDJ"
     },
+    {
+        "id": 23,
+        "name":"2-AM-22-AUTO-v1",
+        "image": "./../../images/categoriesImages/c1/2-AM-22-AUTO-v1.jpeg",
+        "description": "SDJHJFDSHKSDJFKSDJ"
+    },
+    {
+        "id": 24,
+        "name":"3-AM-30-v1",
+        "image": "./../../images/categoriesImages/c1/3-AM-30-v1.jpeg",
+        "description": "SDJHJFDSHKSDJFKSDJ"
+    },
+    {
+        "id": 25 ,
+        "name":"4-AM-45-v1",
+        "image": "./../../images/categoriesImages/c1/4-AM-45-v1.jpeg",
+        "description": "SDJHJFDSHKSDJFKSDJ"
+    },
 ]
 const products2 = [
     {

@@ -44,7 +44,6 @@ const cart = () => {
         /* localStorage.clear(); */ // Clear localStorage (DEV CONSOLE)
         // FALTA AGREGAR NOTAS
         cartProducts.forEach(item => {
-            console.log(item);
             
             totalItems = totalItems + item.quantity;
             let productPosition = products[item.categoryId].findIndex((value) => value.id == item.product_id);
@@ -79,10 +78,8 @@ const cart = () => {
         let target = event.target; // Identificador del elmento clickeado
         
         let productId = target.dataset.id; // id registrado en el boton (0 value pred)
-        console.log(productId);
         
         let categoryId = target.dataset.id2; // clase no 2 registrado en el target (siempre sera la categoria del producto)
-        console.log(productId);
 
         let productPosition = cartProducts.findIndex((value) => value.
         product_id == productId); // Determina la posicion del producto dentro del carrito (En caso de que ya exista el producto, su valor sera >= 0));

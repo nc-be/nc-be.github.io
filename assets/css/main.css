@@ -1083,7 +1083,7 @@
 
 /* Poptrox */
 
-/* 	.poptrox-popup {
+	.poptrox-popup {
 		-moz-box-sizing: content-box;
 		-webkit-box-sizing: content-box;
 		-ms-box-sizing: content-box;
@@ -1151,7 +1151,7 @@
 					display: none !important;
 				}
 
-		} */
+		}
 
 /* Banner */
 
@@ -1170,7 +1170,7 @@
 		justify-content: center;
 		padding: 8em 4em 6em 4em;
 		min-height: 70vh;
-		background-image: url("./../../images/banner.jpg");
+		background-image: url("../../images/banner.jpg");
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;

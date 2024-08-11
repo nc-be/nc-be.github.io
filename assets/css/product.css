@@ -1,12 +1,30 @@
+@import url(font-awesome.min.css);
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
 /* body: Contiene toda la pagina de productos */
 body{
+    position: relative;
+    padding-bottom: 20em;
+    min-height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* svg: Imagenes svg */
+/* svg: Imagenes svg - header .icons iconos de home/search */
+header img{
+    width: 2em; /* tamaño 30px */
+    cursor: pointer; /*Cambiar cursor sobre icono SVG (solo hay un SVG: icono carrito)*/
+}
+
 svg{
-    width: 50px; /* tamaño 30px */
+    width: 2em; /* tamaño 30px */
     cursor: pointer; /*Cambiar cursor sobre icono SVG (solo hay un SVG: icono carrito)*/
 }
 
@@ -30,13 +48,14 @@ button{
     -El padding-top es 10px fijo 
     (OPC) - Agregar delay de 0.5s (o mas) al cambiar (usuario) el width del contenedor
 */
-.container{
+.container {
     width: 900px;
     max-width: 80vw;
     margin: auto;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 1em;
     /* transition: 0.5s; */
+
 }
 
 /* Configuracion de la barra principal:
@@ -46,25 +65,16 @@ button{
     (OPC) -padding-top 10px fijo
 */
 header{
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding-top: 10px; */
 }
 
 /* Configuracion del "boton" 'Volver a pagina principal':
     -La imagen SVG tendra una posicion relativa para poder posicionar el display de items sobre ella (posicion absoluta)
 */
-.title{
-    left: 10px;
-}
 
-/* SE REEMPLAZARA EL TEXTO POR UN LOGO IMG */
-.title a{
-    font-size: large;
-    color: black;
-    
-}
 
 /* Configuracion del icono del carrito:
     -Posicionado 10px a la izquierda (Mejora visibilidad a menor width)
@@ -108,7 +118,7 @@ header{
 .cartContainer{
     background-color: #00204a;
     color: white;
-    width: 400px;
+    width: 300px;
     max-width: 100%;
     position: fixed;
     top: 0;
@@ -128,9 +138,9 @@ header{
     overflow: auto;
 }
 /* Tamaño de barra de desplazamiento al minimo */
-/* .cartContainer .cartList::-webkit-scrollbar{
+.cartContainer .cartList::-webkit-scrollbar{
     width: 0;
-} */
+}
 .cartContainer .btn{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -162,31 +172,40 @@ body.cartContainerON .container{
     transition: 0.5s;
 }
 
-.productsList .item img{
-    width: 80%; /* width */
-    /* Posible cambiar width, agregar fondo, sombra */
-    /* filter: drop-shadow(...); */ /* sombra */
-}
-.productsList .item h2{
-    font-size: 80%;
-    /* Posible cambiar fuente, fondo para titulos, size */
-}
-/* Posible cambiar color de boton, size, posicion etc */
-/* .productsList .item button{
+/* body.cartContainerON footer{
+    transform: translateX(-250px);
+    transition: 0.5s;
+}*/
 
-} */
-
-.productsList .item{
-    position: relative;
-    top: 50px;
-    /* Posible agregar fondo a imagenes planas (las imagenes no son planas) */
+/* El contenido del pie de pagina sobrepone al del carrito de compras, por lo tanto al tener abierto el carrito el pie de pagina no sera visible */
+body.cartContainerON footer{
+    visibility: hidden;
 }
+
+/* Posible cambiar numero de columnas, espacio top,bot,left,right entre productos (individual o global) */
 .productsList{
     /* Posible cambiar numero de columnas, espacio top,bot,left,right entre productos (individual o global) */
     display: grid;
     grid-template-columns: repeat(3,1fr);
     /* gap: 50px; */ /* gap global */
     row-gap: 10px;
+    padding:1em 0 1em 0;
+}
+
+.productsList .item img{
+    width: 80%; /* width */
+    /* Posible cambiar width, agregar fondo, sombra */
+    /* filter: drop-shadow(...); */ /* sombra */
+}
+.productsList .item h2{
+    font-size: 70%;
+    /* Posible cambiar fuente, fondo para titulos, size */
+}
+.productsList .item button{
+    background-color: #2F2F2F;
+    justify-content: center;
+    align-items: center;
+    color: #eee;
 }
 
 /* TEST 1: MODIFICAR Y EXPLICAR -  Productos en el carrito */
@@ -222,21 +241,16 @@ body.cartContainerON .container{
 }
 
 /* TEST 1: MODIFICAR Y EXPLICAR -   Ventana de detalles de productos */
-.titleDetail{
-    font-size: xx-large;
-    padding: 20px 0 20px 0;
-    position: relative;
-    text-align: left;
-    padding-left: 10px;
-}
+
 .detail{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     text-align: left;
+    padding-top: 2em;
 }
 .detail .image img{
-    width: 95%;
+    width: 80%;
 }
 .detail .image{
     position: relative;
@@ -245,12 +259,6 @@ body.cartContainerON .container{
     font-size: xxx-large;
     padding: 40px 0 0 0;
     margin: 0 0 10px 0;
-}
-.detail .price{
-    font-weight: bold;
-    font-size: x-large;
-    letter-spacing: 7px;
-    margin-bottom: 20px;
 }
 .detail .buttons{
     display: flex;
@@ -289,4 +297,117 @@ body.cartContainerON .container{
 .detail .description{
     font-weight: 300;
     padding: 20px 0 20px 20px;
+}
+
+/* Footer */
+#footer{
+    /* 
+    POSICION
+    */
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    background-color:bisque;
+    text-align: center;
+    border-image-repeat:stretch;
+}
+
+#footer .copyright {
+    background-color: bisque;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+    padding-bottom:1em;
+    text-align: center;
+    align-items: center;
+    border-bottom: none;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#footer ul{
+display: flex;
+justify-content:center;
+column-gap: 10px;
+align-items: center;
+list-style: none;
+padding-inline-start:0px;
+}
+
+#footer ul .icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    color: green;
+    text-transform: none !important;
+    font-size: 1.5em;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+#footer ul .icon > .label {
+    display: none;
+}
+
+#footer ul .icon{
+    display: block;
+    border-radius: 100%;
+    margin: 0;
+    padding: 0.5em;
+    border: solid 1px green;
+    color: rgba(132, 233, 132, 0.25);
+}
+
+#footer ul a:hover {
+    background-color:burlywood ;
+    color: #FFF;
+}
+
+/* desktop */
+@media only screen and (max-width: 992px) {
+    .productsList{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .detail{
+        grid-template-columns:  40% 1fr;
+    }
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    .productsList{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail{
+        text-align: center;
+        grid-template-columns: 1fr;
+    }
+    /* .detail .image img{
+        width: unset;
+        height: 40vh;
+    }  */
+    .detail .name{
+        font-size: x-large;
+        margin: 0;
+    }
+    .detail .buttons button{
+        font-size: small;
+    }
+    .detail .buttons{
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .productsList{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .footer ul{
+        grid-template-columns: repeat(2, 1fr); 
+    }
 }

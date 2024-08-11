@@ -88,3 +88,5 @@ const finalStep = (categoryId) => {
         productsList.appendChild(newProduct);
     });
 }
+
+/* <img src="${item.image}"> */
