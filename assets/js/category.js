@@ -22,31 +22,49 @@ loadTemplate();
 // // Funciona mientras que el sitio web esta en uso, se usara para obtener los datos del id del producto y id de su categoria
 const initApp = () => {
     // detailsProductId y detailCategoryId extraen los ids de la URL
-    let detailProductId = new URLSearchParams(window.location.search).get('id_2');
-    let detailCategoryId = new URLSearchParams(window.location.search).get('id_3');
-    /* console.log(detailProductId);
-    console.log(detailCategoryId); */
-
+    var categoryId = new URLSearchParams(window.location.search).get('id');
+    
     // try catch en caso de que se ingrese ud productId incorrecto (NOTA: NO SE PUEDE USAR UN categoryId DISTINTO A LA CATEGORIA ACTUAL, YA QUE NO SE HA GENERADO ESE PRODUCTO Y EL RESULTADO ES undefined)
     try {
-        var info = products[detailCategoryId].filter((value) => value.id == detailProductId)[0];
-        console.log(info);
-        
-        let detail = document.querySelector('.detail');
-        detail.querySelector('.image img').src= info.image;
-        detail.querySelector('.name').innerText= info.name;
-        detail.querySelector('.description').innerText= info.description;
-        detail.querySelector('.addCart').dataset.id= detailProductId;
-        detail.querySelector('.addCart').dataset.id2= detailCategoryId;
+        var newProducts = products[categoryId];
+        console.log(newProducts);
+        console.log(categoryId);
+    
+        finalStep(newProducts, categoryId);
 
-        /* localStorage.clear(); */ // Clear localStorage (DEV CONSOLE)
-        if (!info) {
-            /* console.log('Product doesnt exist'); */
+        if (!newProducts) {
+            console.log('Product doesnt exist 1');
             window.location.href='./categories.html'
         }
     } catch (error) {
-        /* console.log('Product doesnt exist'); */
+        console.log('Product doesnt exist 2');
         window.location.href='./categories.html'
     }
-
 }
+
+const finalStep = (newProducts, categoryId) => {
+    console.log(newProducts);
+
+    let productsList = document.querySelector('.productsList');
+    productsList.innerHTML = null;    
+    newProducts.forEach(item => {
+        // Se crea un item en cada ciclo para el elemento 'div' creado a continuacion
+        let newProduct = document.createElement('div');
+        newProduct.classList.add('item');
+
+        // Parametros del item: link de imagen (src-local), nombre producto (h2-local), id producto (dataId-local)
+        newProduct.innerHTML =
+        `
+        <a href="./details.html?id_2=${item.id}&id_3=${categoryId}" 
+        class="details"><img src=${item.image}></a>
+        <h2>${item.name}</h2>
+        <button 
+            class="addCart" 
+            data-id='${item.id}'
+            data-id2='${categoryId}'>
+            Agregar al carrito
+        </button>`;
+
+        productsList.appendChild(newProduct);
+    })
+};
