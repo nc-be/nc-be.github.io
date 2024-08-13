@@ -1,4 +1,5 @@
-import products from './products.js';
+import { category, subcategories } from './../js/products.js';
+
 const cart = () => {
     let iconCart = document.querySelector('.icon-cart');
     let closeButton = document.querySelector('.cartContainer .btn-close');
@@ -43,12 +44,14 @@ const cart = () => {
         cartList.innerHTML = null; // Vaciar lista de productos antes de añadir
         /* localStorage.clear(); */ // Clear localStorage (DEV CONSOLE)
         // FALTA AGREGAR NOTAS
+        
+
         cartProducts.forEach(item => {
-            
+
             totalItems = totalItems + item.quantity;
-            let productPosition = products[item.categoryId].findIndex((value) => value.id == item.product_id);
+            let productPosition = category[item.categoryId].findIndex((value) => value.id == item.product_id);
             
-            let info = products[item.categoryId][productPosition];
+            let info = category[item.categoryId][productPosition];
             
             let newCartProduct = document.createElement('div');
             newCartProduct.classList.add('item');
@@ -76,10 +79,14 @@ const cart = () => {
     Este evento se produce cuando el sistema identifica que se ha hecho click en algun sitio de la pagina */
     document.addEventListener('click', (event) => {
         let target = event.target; // Identificador del elmento clickeado
+        console.log(target);
         
+
         let productId = target.dataset.id; // id registrado en el boton (0 value pred)
         
-        let categoryId = target.dataset.id2; // clase no 2 registrado en el target (siempre sera la categoria del producto)
+        
+        let categoryId = target.dataset.idc; // clase no 2 registrado en el target (siempre sera la categoria del producto)
+        
 
         let productPosition = cartProducts.findIndex((value) => value.
         product_id == productId); // Determina la posicion del producto dentro del carrito (En caso de que ya exista el producto, su valor sera >= 0));

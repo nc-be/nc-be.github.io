@@ -1,5 +1,6 @@
 import cart from './assets/js/shopping-cart.js';  // Importar carrito
 import sections from './assets/js/sections.js';
+import {subcategories} from './assets/js/products.js';
 
 /* Importar IDs de los archivos temporales (temporary-content.html) para traer el contenido de la lista de productos  */
 let app = document.getElementById('temporaryApp');
@@ -29,19 +30,36 @@ loadTemplate();
 const initApp = () => {
     let productsList = document.querySelector('.productsList');
     productsList.innerHTML = null;  // Borrar contenido actual de lista de productos (Reemplaza contenido temporal que se este mostrando previamente)
+    var count2 = -1;
 
     sections.forEach(section => {
         // Se crea un item en cada ciclo para el elemento 'div' creado a continuacion
+        var count = -1;
+        count2++;
         let newProduct = document.createElement('div');
         newProduct.classList.add('item');
-
         // Parametros del item: link de imagen (src-local), nombre producto (h2-local), id producto (dataId-local)
+
         newProduct.innerHTML =
             `<div>
                 <img src='${section.image}'>
-                <a href="./category.html?id=${section.id}" 
-                class="categories   ">${section.name}</a>
+                <a href="./category.html?idc=${section.id}" 
+                class="categories" data-id="${section.id}">${section.name}</a>
             </div>`;
         productsList.appendChild(newProduct);
+
+        subcategories[count2].forEach(subcategory => {
+            count++;
+            console.log(subcategory.name);
+            
+            let newSubcategory = document.createElement('div');
+            newSubcategory.innerHTML = 
+                `
+                <a class="subcategories" href="./category.html?idc=${section.id}${subcategory.id}"
+                >${subcategory.name}</a>
+                `
+            newProduct.appendChild(newSubcategory);
+            });
     });
+
 }
