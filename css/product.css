@@ -17,27 +17,13 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* svg: Imagenes svg - header .icons iconos de home/search */
-header img{
-    width: 2em; /* tamaño 30px */
-    cursor: pointer; /*Cambiar cursor sobre icono SVG (solo hay un SVG: icono carrito)*/
+img, svg, a, button, span{
+    cursor: pointer;
 }
-
-svg{
-    width: 2em; /* tamaño 30px */
-    cursor: pointer; /*Cambiar cursor sobre icono SVG (solo hay un SVG: icono carrito)*/
-}
-
 /* a: links */
 a{
     text-decoration: none; /* Borrar subrayado */
     /* color: aliceblue; */ /* por definir */
-    cursor: pointer; /* Cambiar cursor sobre icono */
-}
-
-/* button: Botones (Cerrar, Finalizar) - .icon-cart: icono carrito */
-button{
-    cursor: pointer; /*Cambiar cursor sobre botones*/
 }
 
 /* Configuracion del container (global):
@@ -49,13 +35,13 @@ button{
     (OPC) - Agregar delay de 0.5s (o mas) al cambiar (usuario) el width del contenedor
 */
 .container {
-    width: 900px;
-    max-width: 80vw;
+    width: 100%;
+    height: 100%;
+    max-width:95vw;
     margin: auto;
     text-align: center;
-    padding-top: 1em;
-    /* transition: 0.5s; */
-
+    padding-top: 1em;/* 
+    transition: 0.5s ease-out; */
 }
 
 /* Configuracion de la barra principal:
@@ -65,10 +51,85 @@ button{
     (OPC) -padding-top 10px fijo
 */
 header{
-
-    display: flex;
+    display: grid;
+    grid-template-columns: 10em 2em 2em;
     justify-content: space-between;
     align-items: center;
+}
+.banner{
+    display: flex;
+    transform: translateY(0.5em);
+    height: 1.5em;
+    width: 100%;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    font-style: italic;
+    border-style: solid;
+    background-color: rgb(96, 180, 66);
+    border-color: rgb(96, 180, 66);
+    color: white;
+}
+/* .banner img{
+    position: relative;
+    height: 1em;
+    width: 100%;
+} */
+
+/* Configuracion del icono de buscar */
+.icon-search{
+    position: relative;
+    right: -0.5em;
+    height: 30px;
+    align-items: center;
+    bottom: 1.5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(231, 228, 228);
+    display: grid;
+    width: 17em;
+    grid-template-columns: 2em 15em;
+}
+.icon-search img{
+    height: 1.8em;
+    position: absolute;
+    bottom: 1px;
+    left: 1%;
+}
+.icon-search input{
+    /* position: relative; */
+    /* top: 7px; */
+    background-color: white;
+    border-radius: 10px;
+    /* padding: 9px; */
+    border: none;
+    outline: none;
+    background: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size:20px;
+    font-style:normal;
+}
+.icon-search ::placeholder{
+    color:  rgb(231, 228, 228);
+}
+
+
+/* Configuracion de icono buscar expandido al maximo */
+/* body.openSearchbarON .icon-search{
+    grid-template-columns: 2em 35em;
+    transition: 0.5s;
+} */
+.icon-home{
+    position: relative;
+    width: 10em;
+    right: 8em;
+}
+.icon-home img{
+    width: 10em;
 }
 
 /* Configuracion del "boton" 'Volver a pagina principal':
@@ -84,18 +145,23 @@ header{
     -Se aplica flex al contenedor del display (para centrar contenido) y se posiciona en la parte superior derecha del icono SVG. Borde del 50% (circular)
 */
 .icon-cart{
-    right: 10px;
+    height: 33px;
+    width: 6em;
+    left: -4em;
     position: relative;
+    justify-content: center;
+}
+.icon-cart img{
+    width: 4em;
 }
 .icon-cart span{
     position: absolute;
-    background-color: red;
-    top: 0%;
-    right: -10px;
-    width: 20px;    
-    height: 20px;
+    top: 9px;
+    right: 13px;
+    width: 40px;    
+    height: 15px;
+    font-weight: bold;
     color: white;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,18 +247,86 @@ body.cartContainerON .container{
 body.cartContainerON footer{
     visibility: hidden;
 }
+body.cartContainerON .pagination{
+    visibility: hidden;
+}
 
-/* Posible cambiar numero de columnas, espacio top,bot,left,right entre productos (individual o global) */
+.sectionsList{
+    position: flex;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    text-align: center;
+    column-gap: 3em;
+    row-gap: 0.5em;
+    margin: 0 auto;
+    transform: translateY(2em);
+}
+.sectionsList img{
+    width: 100%;
+}
+
+
+/* Posible cambiar numero de columnas, espacio top,bot,left,right entre categorias/subcategorias/productos (individual o global) */
 .productsList{
     /* Posible cambiar numero de columnas, espacio top,bot,left,right entre productos (individual o global) */
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    /* gap: 50px; */ /* gap global */
+    padding-top: 10px;
+    column-gap: 2em;
     row-gap: 10px;
-    padding:1em 0 1em 0;
+}
+.productsList .item .categories{
+    display: grid;
+    grid-template-rows: 1fr 1em;
+    row-gap: 2em;
+    justify-items: center;
+}
+.productsList .item .categories a{
+    width: 100%;
+    height: 1.5em;
+    text-align: center;
+    background-color: #aaa1a1;
+    border-radius: 10px;
+    border-style: solid;
+    font-weight: bold;
+    color: white;
+}
+.productsList .item .subcategoriesContainer{
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(231, 228, 228);
+    padding: 0.5em 0 0.5em 0;
+    display: grid;
+    border-left: 1;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 
-.productsList .item img{
+.productsList .item .product-content{
+    display: grid;
+    grid-template-columns: 70px 0.8fr;
+    column-gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.productsList .item .quantities{
+    display: grid;
+    grid-template-columns: 20px 60px 20px;
+    height: 20px;
+    justify-content: center;
+    align-self: center;
+}
+
+.productsList .item .quantities .quantity-cart{
+    text-align: center;
+}
+
+.productsList img{
     width: 80%; /* width */
     /* Posible cambiar width, agregar fondo, sombra */
     /* filter: drop-shadow(...); */ /* sombra */
@@ -207,14 +341,26 @@ body.cartContainerON footer{
     align-items: center;
     color: #eee;
 }
+/* body.openSearchbarON .icon-search{
+    transition: 0.5s;
+} */
+
+.pagination{
+    position: absolute;
+    width: 100%;
+    bottom: 13em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
 
 /* TEST 1: MODIFICAR Y EXPLICAR -  Productos en el carrito */
 .cartList .item img{
-    width: 100%;
+    width: 80%;
 }
 .cartList .item{
     display: grid;
-    grid-template-columns: 70px 150px 50px 1fr;
+    grid-template-columns:70px 70px 150px 70px 1fr;
     gap: 10px;
     text-align: center;
     align-items: center;
@@ -226,6 +372,15 @@ body.cartContainerON footer{
     background-color: #eee;
     border-radius: 50%;
     color: #555;
+    cursor: pointer;
+}
+.cartList .quantity .delete{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #e93030;
+    border-radius: 50%;
+    color: #000000;
     cursor: pointer;
 }
 .cartList .quantity span:nth-child(2){
@@ -306,19 +461,19 @@ body.cartContainerON footer{
     */
     position: absolute;
     width: 100%;
+    /* height: 127px; */
     bottom: 0;
-    padding-top: 1em;
-    padding-bottom: 2em;
-    background-color:bisque;
+    background-color:rgb(230, 230, 230);
     text-align: center;
     border-image-repeat:stretch;
+    padding-top: 1em;
 }
 
 #footer .copyright {
-    background-color: bisque;
+    background-color: rgb(230, 230, 230);
     color: rgba(0, 0, 0, 0.5);
     font-size: 0.9em;
-    padding-bottom:1em;
+    padding: 1em 0 1em 0;
     text-align: center;
     align-items: center;
     border-bottom: none;
@@ -327,12 +482,33 @@ body.cartContainerON footer{
 }
 
 #footer ul{
-display: flex;
-justify-content:center;
-column-gap: 10px;
-align-items: center;
-list-style: none;
-padding-inline-start:0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(214, 214, 214);
+}
+#footer .inner{
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    width: 90%;
+    margin: auto;
+}
+
+.box-left, .box-right{
+    width: 2em;
+    height: 3em;
+    background-color: rgb(214, 214, 214);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.box-left{
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+}
+
+.box-right{
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
 }
 
 #footer ul .icon:before {
@@ -341,13 +517,13 @@ padding-inline-start:0px;
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
-    color: green;
+    color: white;
     text-transform: none !important;
     font-size: 1.5em;
     display: block;
-    width: 1.5em;
-    height: 1.5em;
-    line-height: 1.5em;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
 }
 
 #footer ul .icon > .label {
@@ -356,30 +532,64 @@ padding-inline-start:0px;
 
 #footer ul .icon{
     display: block;
+    background-color: rgb(26, 119, 66);
     border-radius: 100%;
-    margin: 0;
     padding: 0.5em;
-    border: solid 1px green;
+    border: solid 1px rgb(26, 119, 66);
     color: rgba(132, 233, 132, 0.25);
 }
 
-#footer ul a:hover {
-    background-color:burlywood ;
-    color: #FFF;
+#footer li{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(51, 51, 51);
+    column-gap: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* #footer ul a:hover {
+    background-color:burlywood ;
+    color: #FFF;
+} */
+
 /* desktop */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 2120px) {
+    .productsList{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .productsList img{
+        width: 70%;
+    }
+    body.openSearchbarON .icon-search{
+        width: 33em;
+        grid-template-columns: 2em 30em;
+        transition: 0.5s;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
     .productsList{
         grid-template-columns: repeat(3, 1fr);
     }
-    .detail{
-        grid-template-columns:  40% 1fr;
+    body.openSearchbarON .icon-search{
+        width: 23em;
+        grid-template-columns: 2em 19em;
+        transition: 0.5s;
     }
 }
-
+@media only screen and (max-width: 1000px) {
+    body.openSearchbarON .icon-search{
+        width: 17em;
+        grid-template-columns: 2em 14em;
+        transition: 0.5s;
+    }
+}
 /* mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .productsList{
         grid-template-columns: repeat(2, 1fr);
     }
@@ -401,13 +611,67 @@ padding-inline-start:0px;
     .detail .buttons{
         justify-content: center;
     }
+    .icon-search{
+        width: 9em;
+        grid-template-columns: 2em 6em;
+        transition: 0.5;
+    }
+    body.openSearchbarON .icon-search{
+        width: 27em;
+        grid-template-columns: 2em 24em;
+        transition: 0.5s;
+    }
+    body.openSearchbarON .icon-home{
+        visibility: hidden;
+        transition: 0.5;
+    }
+    #footer ul{
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: repeat(3,1fr);
+    }
+    .box-left, .box-right{
+        width: 2em;
+        height: 6em;
+        background-color: rgb(214, 214, 214);
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 595px) {
+    .productsList img{
+        width: 60%;
+    }
     .productsList{
         grid-template-columns: repeat(1, 1fr);
+        transition: 0.5s;
     }
-    .footer ul{
-        grid-template-columns: repeat(2, 1fr); 
+    .icon-search{
+        width: 8em; 
+        grid-template-columns: 2em 5em;
+        transition: 0.5;
+    }
+    body.openSearchbarON .icon-search{
+        width: 18em;
+        grid-template-columns: 2em 15em;
+        transition: 0.5s;
+    }
+}
+
+@media only screen and (max-width: 472px) {
+    .icon-home{
+        transform: translateX(60px);
+        width: 45px;
+        height: 47.36px;
+    }
+    .icon-home img{
+        width: 100%;
+        height: 47.36px;
+        object-fit: cover;
+        object-position:left;
+    }
+    body.openSearchbarON .icon-cart{
+        visibility: hidden;
+        transition: 0.5;
     }
 }

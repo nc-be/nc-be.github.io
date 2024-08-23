@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pagina de productos</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./../css/product.css">
+</head>
+
+<body>
+	<!-- class="container": Guarda toda la informacion del sitio web -->
+	<div class="container">
+		<!-- Este header contiene la barra de tareas de la pagina: La barra cuenta con 2 botones: pagina principal y carrito -->
+		<header>
+			<!-- "Boton" 'pagina principal', funcion: Volver a la pagina principal -->
+			<div class="icon-search">
+				<!-- ***SE REEMPLAZARA EL ICONO -->
+				<div id="generatedButton"><a href="./search.html?search=''" class="image fit button-search"><img src="./../../images/search.png"></a></div>
+				<input class="input-search" placeholder="Buscar..." type="text">
+			</div>
+			<div class="icon-home">
+				<!-- ***SE REEMPLAZARA EL ICONO -->
+				<a href="./../../index.html" class="image fit"><img src="./../../images/home.png"></a>
+			</div>
+			<!-- Icono 'icon-cart', funcion: Abrir/cerrar carrito de compras -->
+			<div class="icon-cart">
+				<!-- ***SE REEMPLAZARA EL ICONO SVG -->
+				<a class="image fit"><img src="./../../images/cart2.png"></a>
+				<!-- Display del numero actual de objetos en el carrito de compras, default: 0 -->
+				<span>0</span>
+			</div>
+		</header>
+		<!-- id="content": Aqui se inserta el contenido de cada pagina -->
+		<div id="contentContainer">
+			Pre fetch
+		</div>
+	</div>
+
+	<!-- class="cartContainer": Guarda toda la informacion del carrito -->
+	<div class="cartContainer">
+		<h1>CARRITO DE COMPRAS</h1>
+		<!-- class="cartList": Contiene la lista de productos agregados al carrito -->
+		<div class="cartList">
+			<!-- TEST: ITEMS CARRITO -->
+		</div>
+		<div class="btn">
+			<button class="btn-close">
+				Cerrar
+			</button>
+			<button class="btn-finish">
+				Finalizar
+			</button>
+		</div>
+	</div>
+	<script src="./../js/shopping-cart.js" type="module"></script>
+	<footer id="footer">
+		<div class="inner">
+			<div class="box-left"></div>
+			<ul class="icons">
+				<li><a href="#" class="icon fa-whatsapp"><span class="label">Email</span></a><a class="icon-name">+57 317 3632524</a></li>
+				<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a><a class="icon-name">cartera.agroandes@gmail.com</a></li>
+				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a><a class="icon-name">agroandes.co</a></li>
+			</ul>
+			<div class="box-right"></div>
+		</div>
+		<div class="copyright">
+			Agromaquinaria Los Andes S.A.S
+		</div>
+	</footer>
+</body>
+<!-- Footer -->
+<!-- Copyright -->
+</html>

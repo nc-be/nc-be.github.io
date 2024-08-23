@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- El contenido de este segmento se movera a la pagina de productos para mostrar la lista de productos -->
-    <div id="temporaryApp"></div>
+    <div class="tempo" id="temporaryApp"></div>
     <div id="temporaryContent">
         <!-- Post fetch -->
         <div class="detail">
@@ -19,8 +19,12 @@
                 <div class="name"></div>
                 <div class="description"></div>
                 <div class="buttons">
-                    <button>Finalizar</button>
-                    <button class="addCart">Agregar al carrito</button>
+                    <button class="product-minus-details">-</button>
+                    <input class="quantity-details" value = "1" type="number">
+                    <button class="product-plus-details">+</button>
+                    <button class="delete">x</button>
+                    <button class="addCartDetails">Agregar al carrito</button>
+                    <button class="btn-finish-single">Comprar</button>
                 </div>
                 <!-- Posibilidad de agregar contenedor de productos similares -->
                 <!-- <div class="similar"></div> -->

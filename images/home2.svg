@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2023 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="21.1258mm" height="6.2328mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2112.58 623.28"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#60B542}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <path d="M2112.58 121.58l0 226.25 -1074.62 0 0 28.3 1074.62 0 0 125.57 -1448.56 0 0 -125.57 219.61 0 0 -28.3 -219.61 0 0 -226.25 1448.56 0z"/>
+    </clipPath>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1993459926448">
+   <g style="clip-path:url(#id0)">
+    <image x="664.02" y="121.58" width="1448.56" height="380.12" xlink:href="AGROANDES LOGO HORIZONTAL_Images\AGROANDES LOGO HORIZONTAL_ImgID1.png"/>
+   </g>
+   <image x="-0" y="-0" width="718.8" height="623.27" xlink:href="AGROANDES LOGO HORIZONTAL_Images\AGROANDES LOGO HORIZONTAL_ImgID2.png"/>
+   <polygon class="fil0" points="664.02,359.58 879.73,359.58 877.1,366.57 664.02,366.57 "/>
+   <polygon class="fil0" points="1043.82,359.58 2112.58,359.58 2112.58,366.57 1043.82,366.57 "/>
+  </g>
+ </g>
+</svg>
