@@ -182,24 +182,21 @@ header{
         -El borde de cada boton es eliminado, su fondo es distinto y su fuente en negrita (bold)    -   NOTA: EL TAMAÑO DE EL BOTON CERRAR X2 FINALIZAR
 */
 .cartContainer{
-    background-color: #00204a;
-    color: white;
-    width: 300px;
+    background-color: rgb(230, 230, 230);
+    width: 500px;
     max-width: 100%;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     display: grid;
-    grid-template-rows: 50px 1fr 50px;
+    grid-template-rows: 71px 1fr 85px;
 }
-.cartContainer h1{
-    /* padding-top: 10px;
-    padding-left: 20px; */
-    font-size:medium;
-    padding: 20px;
-    margin: 0
+.cartContainer .cart-header img{
+    width: 500px;
+    height: 71px;
 }
+
 .cartContainer .cartList{
     overflow: auto;
 }
@@ -212,14 +209,18 @@ header{
     grid-template-columns: repeat(2,1fr);
 }
 .cartContainer .btn .btn-close{
-    background-color: rgb(52, 100, 204);
+    background-color: white;
+    font-family: 'Bebas Kai', sans-serif;
+    font-size: 20px;
+    color: black;
     border: none;
-    font-weight: bold;
 }
 .cartContainer .btn .btn-finish{
-    background-color: rgb(186, 221, 245);
+    font-family: 'Bebas Kai', sans-serif;
+    font-size: 20px;
+    background-color: rgb(27, 117, 62);
+    color: white;
     border: none;
-    font-weight: bold;
 }
 
 /* Configuracion abrir/cerrar carrito:
@@ -227,7 +228,7 @@ header{
     -Contenido del contenedor principal movido 250px a la izquierda al abrir el carrito
 */
 .cartContainer{
-    right:-400px;
+    right:-500px;
 }
 body.cartContainerON .cartContainer{
     right: 0;
@@ -355,45 +356,125 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* TEST 1: MODIFICAR Y EXPLICAR -  Productos en el carrito */
-.cartList .item img{
-    width: 80%;
+.cartList{
+    padding: 39px;
 }
+
 .cartList .item{
+    width: 420px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
     display: grid;
-    grid-template-columns:70px 70px 150px 70px 1fr;
-    gap: 10px;
+    grid-template-columns:202px 220px;
     text-align: center;
     align-items: center;
 }
-.cartList .quantity span{
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-    color: #555;
-    cursor: pointer;
+
+.cartList .item .cart-image{
+    height: 179px;
+    border-top-left-radius: 10px;
+    border: solid 1px rgb(214, 214, 214);
+    align-content: center;
+    justify-content: center;
 }
-.cartList .quantity .delete{
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: #e93030;
-    border-radius: 50%;
-    color: #000000;
-    cursor: pointer;
+
+.cartList .item img{
+    background-color: white;
+    width: 120px;
+    height: 155px;
 }
-.cartList .quantity span:nth-child(2){
-    background-color: transparent;
-    color: #eee;
-    cursor: auto;
+
+.cartList .cart-info{
+    width: 217px;
+    height: 179px;
+    border-bottom-right-radius: 10px;
+    border: solid 1px rgb(214, 214, 214);
+    display: grid;
+    grid-template-rows: 48px 66px 65px;
 }
-.cartList .quantity{
+.cartList .cart-info .name{
+    height: 48px;
+    border: solid 1px rgb(214, 214, 214);
+    border-left: none;
+    border-right: none;
+    border-top: none;
     display: flex;
+    padding-left: 10px;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: italic;
 }
-.cartList .item:nth-child(even){
-    background-color: #eee1;
+.cartList .cart-info .product-id h2, h3{
+    padding-left: 10px;
+    padding-top: 10px;
+    margin: 0;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
 }
+.cartList .cart-info .product-id h3{
+    padding-top: 10px;
+    font-weight: normal;
+}
+
+.cartList .cart-info .cart-quantities{
+    display: grid;
+    padding-left: 65px;
+    padding-top: 10px;
+    grid-template-columns: 32px 35px 40px 35px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.cartList .cart-info .cart-quantities .delete{
+    height: 35px;
+    display: inline-block;
+    background-color: rgb(179, 179, 179);
+    border-color: rgb(214, 214, 214);
+    color: rgb(77, 77, 77);
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+.cartList .cart-info .cart-quantities .cart-minus{
+    height: 35px;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(214, 214, 214);
+    color: rgb(77, 77, 77);
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+.cartList .cart-info .cart-quantities .quantity-cart{
+    height: 29px;
+    text-align: center;
+    color: rgb(77, 77, 77);
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+.cartList .cart-info .cart-quantities .cart-plus{
+    height: 35px;
+    display: inline-block;
+    background-color: white;
+    border-color: rgb(214, 214, 214);
+    border-bottom-right-radius: 10px;
+    color: rgb(77, 77, 77);
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+} 
 
 /* TEST 1: MODIFICAR Y EXPLICAR -   Ventana de detalles de productos */
 

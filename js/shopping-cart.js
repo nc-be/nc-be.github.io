@@ -56,18 +56,31 @@ const cart = () => {
             newCartProduct.classList.add('product');
 
             newCartProduct.innerHTML =
-                `<div class="image">
-                    <img src="${info.image}" />
+                `
+                <div class="cart-image">
+                    <div class="image">
+                        <img src="${info.image}" />
+                    </div>
                 </div>
-                <div class="name">
-                ${info.name}
-                </div>
-                <div class="quantity">
-                    <span class="minus ${item.categoryId}" data-id='${info.id}'>-</span>
-                    <span>${item.quantity}</span>
-                    <span class="plus ${item.categoryId}" data-id='${info.id}'
-                    >+</span>
-                    <span class="delete ${item.categoryId}" data-id='${info.id}'>X</span>
+                <div class="cart-info">
+                    <div class="name">
+                        ${info.name}
+                    </div>
+                    <div class="product-id">
+                        <h2>
+                            CODIGO:
+                        </h2>
+                        <h3>
+                        ${info.id}
+                        </h3>
+                    </div>
+                    <div class="cart-quantities">
+                        <button class="delete ${item.categoryId}" data-id='${info.id}'>X</button>
+                        <button class="cart-minus ${item.categoryId}" data-id='${info.id}'>-</button>
+                        <input class="quantity-cart" id='cart${info.id}' value = '${item.quantity}' type="number">
+                        <button class="cart-plus ${item.categoryId}" data-id='${info.id}'
+                        >+</button>
+                    </div>
                 </div>`;
 
             cartList.appendChild(newCartProduct);
@@ -116,6 +129,7 @@ const cart = () => {
         
         let quantityCartId = document.getElementById(`product${productId}`);
         let quantityCartId2 = document.getElementById(`details${productId}`);
+        let quantityCartId3 = document.getElementById(`cart${productId}`);
         
         // Condicional se activa cuando se clickee cualquiera de los botones de agregar/eliminar carrito (utilizando el boton de la lista de productos o el plus del carrito de compras)
         if(target.classList.contains('addCart')){
@@ -126,9 +140,10 @@ const cart = () => {
             for (let i = 0; i < quantityCartId.value; i++) {
                 quantity++;
             }
-
+            
             addToCart(quantity, productPosition, productId, categoryId);
-        }if(target.classList.contains('addCartDetails')){
+
+        }else if(target.classList.contains('addCartDetails')){
             if(quantityCartId2.value == 0){
                 quantityCartId2.value = 1;
             }
@@ -138,6 +153,7 @@ const cart = () => {
             }
 
             addToCart(quantity, productPosition, productId, categoryId);
+
         }else if(target.classList.contains('product-plus-details')){
             quantityCartId2.value = Number(quantityCartId2.value)+1;
         } else if(target.classList.contains('product-minus-details') && Number(quantityCartId2.value) > 1){
@@ -147,16 +163,36 @@ const cart = () => {
             quantityCartId.value = Number(quantityCartId.value)+1;
         } else if(target.classList.contains('product-minus') && Number(quantityCartId.value) > 1){
             quantityCartId.value = Number(quantityCartId.value)-1;
-        } else if (target.classList.contains('plus')) {
-            quantity++;
-            addToCart(quantity, productPosition, productId, categoryId);
-        } else if(target.classList.contains('minus')){
-            quantity--;
-            addToCart(quantity, productPosition, productId, categoryId);
-        } else if(target.classList.contains('delete')){
-            quantity = 0;
-            addToCart(quantity, productPosition, productId, categoryId);
-        }
+        }  
+            
+            if (target.classList.contains('cart-plus') && quantity > 0) {
+                if (quantity == 1 && quantityCartId3.value <= 1) {
+                    quantityCartId3.value = quantity;
+                }
+                
+                quantity = 0;
+                for (let i = 0; i < Number(quantityCartId3.value)+1; i++) {
+                    quantity++;
+                }
+                quantityCartId3.value=quantity;
+                console.log(quantityCartId3);
+                addToCart(quantity, productPosition, productId, categoryId);
+            }
+            else if(target.classList.contains('cart-minus') && quantity > 0){
+                if (quantity == 1 && quantityCartId3.value <= 1) {
+                    quantityCartId3.value = quantity;
+                }
+                quantity = 0;
+                for (let i = 0; i < Number(quantityCartId3.value)-1; i++) {
+                    quantity++;
+                }
+                quantityCartId3.value=quantity;
+                addToCart(quantity, productPosition, productId, categoryId);
+            } else if(target.classList.contains('delete') && quantity > 0){
+                quantity = 0;
+                quantityCartId3.value = quantity;
+                addToCart(quantity, productPosition, productId, categoryId);
+            }
     });
 
 
