@@ -369,6 +369,7 @@ input[type=number]::-webkit-outer-spin-button {
     grid-template-columns:202px 220px;
     text-align: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .cartList .item .cart-image{

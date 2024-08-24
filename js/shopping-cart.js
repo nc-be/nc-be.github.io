@@ -9,7 +9,7 @@ const cart = () => {
     // Estos eventos hacen que el boton 'cerrar' o el icono del carrito cierren la ventana del carrito (en realidad la mueve a la izquierda 400px de su posc. inicial)
     iconCart.addEventListener('click', () => {
         body.classList.toggle('cartContainerON')
-    })
+    });
     closeButton.addEventListener('click', () => {
         body.classList.toggle('cartContainerON')
     })
@@ -21,7 +21,7 @@ const cart = () => {
                 cartProducts.push({
                     product_id: productId,
                     categoryId: categoryId,
-                    quantity: quantity
+                    quantity: Number(quantity)
                 })
             }else {
                 cartProducts[productPosition].quantity = quantity;
@@ -75,11 +75,10 @@ const cart = () => {
                         </h3>
                     </div>
                     <div class="cart-quantities">
-                        <button class="delete ${item.categoryId}" data-id='${info.id}'>X</button>
-                        <button class="cart-minus ${item.categoryId}" data-id='${info.id}'>-</button>
-                        <input class="quantity-cart" id='cart${info.id}' value = '${item.quantity}' type="number">
-                        <button class="cart-plus ${item.categoryId}" data-id='${info.id}'
-                        >+</button>
+                        <button class="delete ${item.categoryId}" data-id='${info.id}' data-idc='${item.categoryId}'>X</button>
+                        <button class="cart-minus ${item.categoryId}" data-id='${info.id}' data-idc='${item.categoryId}'>-</button>
+                        <span class="quantity-cart" id='cart${info.id}' data-id='${info.id}' data-idc='${item.categoryId}'>${item.quantity}</span>
+                        <button class="cart-plus ${item.categoryId}" data-id='${info.id}' data-idc='${item.categoryId}'>+</button>
                     </div>
                 </div>`;
 
@@ -114,6 +113,8 @@ const cart = () => {
             element_a.click()
         }, 1000);   
     });
+
+    
     
     /* Evento para agregar items al carrito
     Este evento se produce cuando el sistema identifica que se ha hecho click en algun sitio de la pagina */
@@ -140,6 +141,7 @@ const cart = () => {
             for (let i = 0; i < quantityCartId.value; i++) {
                 quantity++;
             }
+            console.log(quantity, productPosition, productId, categoryId);
             
             addToCart(quantity, productPosition, productId, categoryId);
 
@@ -163,36 +165,18 @@ const cart = () => {
             quantityCartId.value = Number(quantityCartId.value)+1;
         } else if(target.classList.contains('product-minus') && Number(quantityCartId.value) > 1){
             quantityCartId.value = Number(quantityCartId.value)-1;
-        }  
-            
-            if (target.classList.contains('cart-plus') && quantity > 0) {
-                if (quantity == 1 && quantityCartId3.value <= 1) {
-                    quantityCartId3.value = quantity;
-                }
-                
-                quantity = 0;
-                for (let i = 0; i < Number(quantityCartId3.value)+1; i++) {
-                    quantity++;
-                }
-                quantityCartId3.value=quantity;
-                console.log(quantityCartId3);
-                addToCart(quantity, productPosition, productId, categoryId);
-            }
-            else if(target.classList.contains('cart-minus') && quantity > 0){
-                if (quantity == 1 && quantityCartId3.value <= 1) {
-                    quantityCartId3.value = quantity;
-                }
-                quantity = 0;
-                for (let i = 0; i < Number(quantityCartId3.value)-1; i++) {
-                    quantity++;
-                }
-                quantityCartId3.value=quantity;
-                addToCart(quantity, productPosition, productId, categoryId);
-            } else if(target.classList.contains('delete') && quantity > 0){
-                quantity = 0;
-                quantityCartId3.value = quantity;
-                addToCart(quantity, productPosition, productId, categoryId);
-            }
+        }
+        
+        else if (target.classList.contains('cart-plus')) {
+            quantity++;
+            addToCart(quantity, productPosition, productId, categoryId);
+        }else if(target.classList.contains('cart-minus')){
+            quantity--;
+            addToCart(quantity, productPosition, productId, categoryId);
+        } else if(target.classList.contains('delete')){
+            quantity = 0;
+            addToCart(quantity, productPosition, productId, categoryId);
+        }
     });
 
 
