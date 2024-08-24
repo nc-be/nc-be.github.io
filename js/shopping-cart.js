@@ -33,11 +33,11 @@ const cart = () => {
 
         // localStorage se encargara de retener la informacion que se encuentra en el carrito de compras para el usuario actual, es decir, si se apaga el dispositivo o cierra la pagina se guardaran los productos agregados
         localStorage.setItem('cart', JSON.stringify(cartProducts));
-        displayData();
+        displayData(cartProducts);
     };
 
     // Mostrar informacion para visualizar: Lista de items del carrito - Manejo del contador del carrito (span del icono del carrito)
-    const displayData = () => {
+    const displayData = (cartProducts) => {
         let cartList = document.querySelector('.cartList');
         let iconCartSpan = document.querySelector('.icon-cart span');
         let totalItems = 0; // Cantidad pred. en el span del carrito
@@ -143,7 +143,7 @@ const cart = () => {
             for (let i = 0; i < quantityCartId.value; i++) {
                 quantity++;
             }
-            console.log(quantity, productPosition, productId, categoryId);
+            console.log(quantity, productPosition, productId, categoryId, cartProducts);
             
             addToCart(quantity, productPosition, productId, categoryId);
 
@@ -183,13 +183,11 @@ const cart = () => {
 
     // Funciona mientras que el sitio web esta en uso, se encarga de chequear si ya existian productos dentro del carrito, si se cumple, guardan la informacion de los productos en 'cartProducts' y procede al display utilizando la funcion 'initApp'
     const initApp = () => {
-        setTimeout(() => {
-        console.log(localStorage.getItem('cart'));
+        console.log('test initApp');
         if (localStorage.getItem('cart')) {
             cartProducts = JSON.parse(localStorage.getItem('cart'));
+            displayData(cartProducts);
         }
-            displayData();
-        }, 1000);
     }
     initApp();
 }
