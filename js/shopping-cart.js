@@ -110,8 +110,10 @@ const cart = () => {
 
         finishButton.appendChild(element_a);
         setTimeout(() => {
-            element_a.click()
-        }, 1000);   
+            location.reload();
+        }, 1000);
+        
+        element_a.click()
     });
 
     
@@ -179,14 +181,15 @@ const cart = () => {
         }
     });
 
-
-
     // Funciona mientras que el sitio web esta en uso, se encarga de chequear si ya existian productos dentro del carrito, si se cumple, guardan la informacion de los productos en 'cartProducts' y procede al display utilizando la funcion 'initApp'
     const initApp = () => {
+        console.log(localStorage.getItem('cart'));
         if (localStorage.getItem('cart')) {
             cartProducts = JSON.parse(localStorage.getItem('cart'));
         }
-        displayData();
+        setTimeout(() => {
+            displayData();
+        }, 1000);
     }
     initApp();
 }

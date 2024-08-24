@@ -80,6 +80,5 @@ const initApp = () => {
         count2++;
     });
     
-    
 }
 
