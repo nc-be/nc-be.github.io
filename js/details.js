@@ -5,6 +5,7 @@ let app = document.getElementById('temporaryApp');
 let temporaryContent = document.getElementById('temporaryContent');
 
 const loadTemplate = () => {
+    debugger
     fetch('./../html/temporary-content.html')
         .then(response => response.text())
         .then(html => {

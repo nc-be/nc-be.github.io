@@ -11,6 +11,7 @@ let temporaryContent = document.getElementById('temporaryContent');
     -Contenido actual - contenedor contentContainer vacio o algun contenido temporal que se este utilizando
 */
 const loadTemplate = () => {
+    debugger
     fetch('./temporary-content.html')
         .then(response => response.text())
         .then(html => {
