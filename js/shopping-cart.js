@@ -183,11 +183,11 @@ const cart = () => {
 
     // Funciona mientras que el sitio web esta en uso, se encarga de chequear si ya existian productos dentro del carrito, si se cumple, guardan la informacion de los productos en 'cartProducts' y procede al display utilizando la funcion 'initApp'
     const initApp = () => {
+        setTimeout(() => {
         console.log(localStorage.getItem('cart'));
         if (localStorage.getItem('cart')) {
             cartProducts = JSON.parse(localStorage.getItem('cart'));
         }
-        setTimeout(() => {
             displayData();
         }, 1000);
     }
