@@ -38,6 +38,7 @@ const cart = () => {
 
     // Mostrar informacion para visualizar: Lista de items del carrito - Manejo del contador del carrito (span del icono del carrito)
     const displayData = (cartProducts) => {
+        
         let cartList = document.querySelector('.cartList');
         let iconCartSpan = document.querySelector('.icon-cart span');
         let totalItems = 0; // Cantidad pred. en el span del carrito
@@ -186,6 +187,7 @@ const cart = () => {
         console.log('test initApp');
         if (localStorage.getItem('cart')) {
             cartProducts = JSON.parse(localStorage.getItem('cart'));
+            debugger
             displayData(cartProducts);
         }
     }
