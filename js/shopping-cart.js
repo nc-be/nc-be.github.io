@@ -187,7 +187,7 @@ const cart = () => {
         console.log('test initApp');
         if (localStorage.getItem('cart')) {
             cartProducts = JSON.parse(localStorage.getItem('cart'));
-            debugger
+            /* debugger */
             displayData(cartProducts);
         }
     }
