@@ -11,11 +11,10 @@ let temporaryContent = document.getElementById('temporaryContent');
     -Contenido actual - contenedor contentContainer vacio o algun contenido temporal que se este utilizando
 */
 debugger
-var perfEntries = performance.getEntriesByType("navigation");
+/* var perfEntries = performance.getEntriesByType("navigation");
 if (perfEntries[0].type === "back_forward") {
     location.reload();
-}
-
+} */
 const loadTemplate = () => {
     /* debugger */
     fetch('./temporary-content.html')

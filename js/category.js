@@ -5,13 +5,8 @@ import search from './search.js';
 let app = document.getElementById('temporaryApp');
 let temporaryContent = document.getElementById('temporaryContent');
 
-var perfEntries = performance.getEntriesByType("navigation");
-if (perfEntries[0].type === "back_forward") {
-    location.reload();
-}
-
+debugger
 const loadTemplate = () => {
-    /* debugger */
     fetch('./../html/temporary-content.html')
         .then(response => response.text())
         .then(html => {

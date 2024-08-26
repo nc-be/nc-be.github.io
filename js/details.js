@@ -1,3 +1,4 @@
+import search from './search.js';
 import cart from './../js/shopping-cart.js';
 import { category } from './../js/products.js';
 
@@ -5,11 +6,10 @@ let app = document.getElementById('temporaryApp');
 let temporaryContent = document.getElementById('temporaryContent');
 
 debugger
-var perfEntries = performance.getEntriesByType("navigation");
+/* var perfEntries = performance.getEntriesByType("navigation");
 if (perfEntries[0].type === "back_forward") {
     location.reload();
-}
-
+} */
 const loadTemplate = () => {
     /* debugger */
     fetch('./../html/temporary-content.html')
@@ -20,6 +20,7 @@ const loadTemplate = () => {
             contentTab.innerHTML = temporaryContent.innerHTML; // Reemplazar el Contenido actual con Contenido temporal
             temporaryContent.innerHTML = null; // Eliminar el Contenido temporal
             cart(); // Ejecuta eventos para abrir/cerrar carrito
+            search();
             initApp();
         })
 }
